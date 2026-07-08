@@ -1,0 +1,596 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Valencia Mentoring</title>
+  <meta name="description" content="Mentoría educativa y creativa para estudiar mejor, organizar ideas y usar IA responsablemente.">
+  <style>
+    :root {
+      --bg: #f7f9fb;
+      --panel: #ffffff;
+      --ink: #101722;
+      --muted: #566273;
+      --line: #dce5ee;
+      --blue: #1769ff;
+      --mint: #12bfa4;
+      --soft: #eef5ff;
+      --soft-mint: #e9fbf7;
+      --gold: #f2b84b;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.5;
+    }
+    a { color: inherit; }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid var(--line);
+      background: rgba(247, 249, 251, .94);
+      backdrop-filter: blur(14px);
+    }
+    .nav {
+      width: min(1080px, calc(100% - 28px));
+      min-height: 62px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      font-weight: 850;
+      letter-spacing: 0;
+      white-space: nowrap;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--muted);
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+    }
+    .nav-contact {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+    main section {
+      width: min(1080px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 42px 0;
+    }
+    .hero {
+      min-height: calc(100vh - 62px);
+      display: grid;
+      grid-template-columns: 1fr .95fr;
+      gap: 32px;
+      align-items: center;
+      padding-top: 30px;
+      padding-bottom: 26px;
+    }
+    .eyebrow {
+      margin-bottom: 12px;
+      color: var(--blue);
+      font-size: 14px;
+      font-weight: 800;
+    }
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.08;
+      letter-spacing: 0;
+    }
+    h1 {
+      max-width: 780px;
+      font-size: clamp(38px, 8vw, 72px);
+    }
+    h2 {
+      margin-bottom: 12px;
+      font-size: clamp(28px, 5vw, 44px);
+    }
+    h3 {
+      margin-bottom: 8px;
+      font-size: 21px;
+    }
+    p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .lead {
+      max-width: 720px;
+      margin-top: 18px;
+      font-size: 19px;
+    }
+    .microcopy {
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 22px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 0 16px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      background: var(--ink);
+      color: white;
+      font-weight: 780;
+      text-align: center;
+      text-decoration: none;
+    }
+    .btn.blue {
+      border-color: var(--blue);
+      background: var(--blue);
+    }
+    .btn.secondary {
+      border-color: var(--line);
+      background: white;
+      color: var(--ink);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .two {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .card, .tool-card, .price-card, .blog-link {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .card, .price-card, .blog-link {
+      padding: 18px;
+    }
+    .tool-stack {
+      display: grid;
+      gap: 10px;
+    }
+    .tool-card {
+      padding: 16px;
+      box-shadow: 0 20px 50px rgba(16, 23, 34, .08);
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      min-height: 26px;
+      margin-bottom: 10px;
+      padding: 0 10px;
+      border-radius: 999px;
+      background: var(--soft);
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .tag.mint {
+      background: var(--soft-mint);
+      color: #087f6f;
+    }
+    .prompt {
+      margin-top: 12px;
+      padding: 14px;
+      overflow-x: auto;
+      border-radius: 8px;
+      background: #0f172a;
+      color: #e5eefb;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 13px;
+      line-height: 1.45;
+    }
+    .copy {
+      min-height: 38px;
+      margin-top: 10px;
+      padding: 0 12px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+      color: var(--ink);
+      font-weight: 750;
+      cursor: pointer;
+    }
+    .list {
+      display: grid;
+      gap: 9px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .list li {
+      display: flex;
+      gap: 10px;
+      color: var(--muted);
+    }
+    .list li::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      margin-top: 8px;
+      border-radius: 999px;
+      background: var(--mint);
+      flex: 0 0 auto;
+    }
+    .band {
+      width: 100%;
+      margin: 20px 0;
+      background: var(--ink);
+      color: white;
+    }
+    .band section {
+      padding: 34px 0;
+    }
+    .band p {
+      color: #cbd5e1;
+    }
+    .price {
+      margin: 10px 0;
+      color: var(--ink);
+      font-size: 36px;
+      font-weight: 900;
+    }
+    .price small {
+      color: var(--muted);
+      font-size: 15px;
+      font-weight: 650;
+    }
+    .plan-note {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .steps {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+      counter-reset: steps;
+    }
+    .step {
+      display: grid;
+      grid-template-columns: 34px 1fr;
+      gap: 12px;
+      padding: 14px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+    .step::before {
+      counter-increment: steps;
+      content: counter(steps);
+      width: 30px;
+      height: 30px;
+      display: grid;
+      place-items: center;
+      border-radius: 8px;
+      background: var(--soft);
+      color: var(--blue);
+      font-weight: 900;
+    }
+    .blog-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+    .blog-link {
+      display: block;
+      text-decoration: none;
+    }
+    .blog-link p {
+      margin-top: 6px;
+    }
+    .note {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+    footer {
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+    footer div {
+      width: min(1080px, calc(100% - 28px));
+      margin: 0 auto;
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 860px) {
+      .nav {
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 12px 0;
+      }
+      .nav-links {
+        width: 100%;
+        overflow-x: auto;
+        padding-bottom: 2px;
+      }
+      .nav-contact { display: none; }
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding-top: 28px;
+      }
+      .grid, .two {
+        grid-template-columns: 1fr;
+      }
+      main section {
+        padding: 34px 0;
+      }
+      .actions {
+        display: grid;
+      }
+      .btn {
+        width: 100%;
+      }
+      .lead {
+        font-size: 17px;
+      }
+      .price {
+        font-size: 32px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <div class="brand">Valencia Mentoring</div>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#herramientas">Herramientas</a>
+        <a href="#acompanamiento">Acompañamiento</a>
+        <a href="#padres">Padres</a>
+        <a href="#blog">Blog</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+      <div class="nav-contact">WhatsApp +507 6546-8832</div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="eyebrow">Mentoría educativa y creativa con IA responsable</div>
+        <h1>Aprende mejor. Crea mejor. Avanza con claridad.</h1>
+        <p class="lead">Acompañamiento para estudiantes de 13+ y creativos que necesitan orden, foco, estrategia e inteligencia artificial usada con criterio.</p>
+        <p class="microcopy">Primero te doy herramientas. Si necesitas seguimiento, trabajamos un plan personalizado.</p>
+        <div class="actions">
+          <a class="btn blue" href="https://wa.me/50765468832?text=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Valencia%20Mentoring" target="_blank" rel="noreferrer">Contactar por WhatsApp</a>
+          <a class="btn secondary" href="mailto:josemvalenciar@gmail.com?subject=Informaci%C3%B3n%20Valencia%20Mentoring&body=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Valencia%20Mentoring.">Escribir por correo</a>
+        </div>
+      </div>
+
+      <aside class="tool-stack" aria-label="Herramientas rápidas">
+        <div class="tool-card">
+          <span class="tag">Estudiante</span>
+          <h3>Prompt para entender sin copiar</h3>
+          <p>Úsalo cuando un tema se sienta confuso.</p>
+          <div class="prompt" id="prompt-estudiante">Explícame este tema como si tuviera 15 años. No hagas mi tarea por mí. Dame una explicación simple, un ejemplo cotidiano, 3 preguntas para comprobar si entendí y un mini reto para practicar: [tema]</div>
+          <button class="copy" data-copy="prompt-estudiante">Copiar prompt</button>
+        </div>
+        <div class="tool-card">
+          <span class="tag mint">Padres</span>
+          <h3>Pregunta que desbloquea</h3>
+          <p>Antes de corregir o regañar, pregunta: “¿Qué parte te está costando comenzar?”. Esa respuesta muestra dónde está el bloqueo real.</p>
+        </div>
+      </aside>
+    </section>
+
+    <section id="herramientas">
+      <h2>Herramientas de alto valor</h2>
+      <p class="lead">No son adornos. Son microintervenciones para estudiar, crear y decidir el siguiente paso.</p>
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Foco</span>
+          <h3>Sprint 25/5</h3>
+          <p>Una tarea. Un primer paso. 25 minutos. Luego 5 minutos de descanso. La meta no es inspiración: es una victoria pequeña y visible.</p>
+        </article>
+        <article class="card">
+          <span class="tag">IA responsable</span>
+          <h3>Regla 3C</h3>
+          <p>Comprender, contrastar, crear. Si la IA no ayuda a hacer una de esas tres cosas, probablemente está sustituyendo el aprendizaje.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Creativos</span>
+          <h3>Oferta en 3 líneas</h3>
+          <p>Qué haces, para quién y qué cambio produces. Si tu idea no cabe ahí, todavía no está lista para venderse.</p>
+        </article>
+      </div>
+
+      <div class="two">
+        <article class="card">
+          <h3>Prompt para organizar una tarea</h3>
+          <p>Para estudiantes que se bloquean antes de empezar.</p>
+          <div class="prompt" id="prompt-tarea">Tengo esta tarea. No la hagas por mí. Ayúdame a dividirla en pasos, detectar qué debo investigar, crear una estructura y elegir el primer bloque de 25 minutos. Consigna: [pegar consigna]. Fecha de entrega: [fecha]</div>
+          <button class="copy" data-copy="prompt-tarea">Copiar prompt</button>
+        </article>
+        <article class="card">
+          <h3>Prompt para proyectos creativos</h3>
+          <p>Para convertir una idea suelta en una acción vendible.</p>
+          <div class="prompt" id="prompt-creativo">Actúa como mentor creativo. Ayúdame a convertir esta idea en una oferta clara. Devuélveme: público ideal, problema, promesa, entregables, primer precio, mensaje de venta y plan de 7 días. Idea: [pegar idea]</div>
+          <button class="copy" data-copy="prompt-creativo">Copiar prompt</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="acompanamiento">
+      <h2>Acompañamiento</h2>
+      <p class="lead">Dos rutas simples: online para seguimiento constante; presencial para una inmersión más intensa en un solo día.</p>
+      <div class="two">
+        <article class="price-card">
+          <span class="tag">Online</span>
+          <h3>Aprender Como un PRO</h3>
+          <div class="price">$50 <small>por ciclo semanal</small></div>
+          <p>Acompañamiento online de 1 hora, 2 veces a la semana, para dar seguimiento a asignaciones, talleres, hábitos de estudio o el plan personalizado del cliente.</p>
+          <ul class="list">
+            <li>2 videollamadas de 1 hora por semana.</li>
+            <li>Plan personalizado de acción.</li>
+            <li>Seguimiento de asignaciones o talleres.</li>
+            <li>Prompts de IA responsable.</li>
+            <li>Recomendaciones para tutor o familia.</li>
+          </ul>
+          <p class="plan-note">Ideal para estudiantes que necesitan ritmo, revisión y continuidad.</p>
+        </article>
+
+        <article class="price-card">
+          <span class="tag mint">Presencial</span>
+          <h3>Sesión presencial intensiva</h3>
+          <div class="price">$75 <small>según agenda</small></div>
+          <p>Sesión presencial de 2 horas en un mismo día, más seguimiento por videollamada 3 veces a la semana para revisar avances y ajustar el plan.</p>
+          <ul class="list">
+            <li>1 sesión presencial de 2 horas.</li>
+            <li>Diagnóstico práctico de estudio o proyecto.</li>
+            <li>Ruta de trabajo personalizada.</li>
+            <li>3 seguimientos por videollamada esa semana.</li>
+            <li>Soporte para organizar tareas, talleres o proyectos.</li>
+          </ul>
+          <p class="plan-note">Disponible según agenda, ubicación y autorización del tutor cuando aplique.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="band">
+      <section>
+        <h2>¿Cómo funciona?</h2>
+        <p>Sin discursos eternos. Detectamos el bloqueo, diseñamos una ruta y acompañamos la ejecución.</p>
+      </section>
+    </div>
+
+    <section>
+      <div class="steps">
+        <div class="step"><p><strong>Contacto breve.</strong><br>Me escribes por WhatsApp o correo y me dices si es para estudiante, creativo o padre/madre.</p></div>
+        <div class="step"><p><strong>Objetivo claro.</strong><br>Definimos qué debe mejorar esta semana: tarea, taller, exposición, hábito, proyecto o uso de IA.</p></div>
+        <div class="step"><p><strong>Plan de acción.</strong><br>Convertimos el objetivo en pasos visibles, sesiones y seguimiento.</p></div>
+        <div class="step"><p><strong>Ejecución acompañada.</strong><br>Revisamos avances, ajustamos bloqueos y entrenamos autonomía.</p></div>
+      </div>
+    </section>
+
+    <section id="padres">
+      <h2>Herramientas para padres</h2>
+      <p class="lead">La meta no es controlar más. Es acompañar mejor.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>Semáforo de IA</h3>
+          <ul class="list">
+            <li>Verde: entiende y explica con sus palabras.</li>
+            <li>Amarillo: necesita revisar fuentes o estructura.</li>
+            <li>Rojo: copia, pega y no puede defender el trabajo.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Pregunta de seguimiento</h3>
+          <p>“Muéstrame qué parte hiciste tú y qué parte te ayudó a pensar la IA”. Esa frase enseña criterio sin crear una pelea.</p>
+        </article>
+        <article class="card">
+          <h3>Señal de progreso</h3>
+          <p>Un estudiante mejora cuando puede nombrar su primer paso. No esperes perfección: busca claridad, repetición y cierre.</p>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Muestra breve</h2>
+      <div class="card">
+        <h3>De “no sé por dónde empezar” a “hoy hago el primer bloque”</h3>
+        <p><strong>Punto de partida:</strong> estudiante inteligente, pero disperso, con tareas atrasadas y uso confuso de IA.</p>
+        <p><strong>Proceso:</strong> sacamos pendientes de la cabeza, elegimos prioridad, dividimos la tarea en preparar/hacer/revisar y usamos IA como tutor.</p>
+        <p><strong>Resultado:</strong> una acción de 25 minutos, un prompt responsable y un plan semanal que se puede seguir.</p>
+      </div>
+    </section>
+
+    <section id="blog">
+      <h2>Blog</h2>
+      <p class="lead">Artículos cortos, escaneables y pensados para lectura móvil. Cada uno deja una herramienta aplicable.</p>
+      <div class="blog-list">
+        <a class="blog-link" href="blog/ia-responsable-estudiantes.html">
+          <h3>Cómo saber si tu hijo usa IA de forma responsable</h3>
+          <p>Una guía práctica para distinguir apoyo real de copia automática.</p>
+        </a>
+        <a class="blog-link" href="blog/organizacion-adolescentes.html">
+          <h3>Cómo ayudar a un adolescente a organizarse sin pelear</h3>
+          <p>Lista única, prioridad y bloque de 25 minutos.</p>
+        </a>
+        <a class="blog-link" href="blog/prompts-que-ensenan.html">
+          <h3>Prompts que enseñan, no que reemplazan</h3>
+          <p>Cómo pedirle a la IA que haga pensar al estudiante.</p>
+        </a>
+        <a class="blog-link" href="blog/acompanar-sin-controlar.html">
+          <h3>Acompañar sin controlar</h3>
+          <p>Una ruta para padres que quieren ayudar sin convertir todo en pelea.</p>
+        </a>
+        <a class="blog-link" href="blog/creatividad-tecnologia-disciplina.html">
+          <h3>Creatividad, tecnología y disciplina</h3>
+          <p>Por qué una buena idea necesita estructura.</p>
+        </a>
+        <a class="blog-link" href="blog/sistema-pro-creativos.html">
+          <h3>Sistema PRO para creativos</h3>
+          <p>Propósito, ruta y organización para pasar de idea a proyecto.</p>
+        </a>
+      </div>
+    </section>
+
+    <section id="contacto">
+      <h2>Contacto</h2>
+      <p class="lead">Para cupos, dudas o agenda, escríbeme por WhatsApp o correo electrónico.</p>
+      <div class="actions">
+        <a class="btn blue" href="https://wa.me/50765468832?text=Hola%2C%20quiero%20reservar%20un%20cupo%20en%20Valencia%20Mentoring" target="_blank" rel="noreferrer">WhatsApp: +507 6546-8832</a>
+        <a class="btn secondary" href="mailto:josemvalenciar@gmail.com?subject=Valencia%20Mentoring&body=Hola%2C%20quiero%20informaci%C3%B3n%20sobre%20Valencia%20Mentoring.">josemvalenciar@gmail.com</a>
+      </div>
+      <p class="note">Valencia Mentoring no ofrece terapia, diagnósticos ni servicios académicos formales. Para menores de edad, el contacto debe contar con autorización de madre, padre o tutor.</p>
+    </section>
+  </main>
+
+  <footer>
+    <div>
+      <span>Valencia Mentoring. Aprende mejor. Crea mejor. Avanza con claridad.</span>
+      <span>WhatsApp: <a href="https://wa.me/50765468832">+507 6546-8832</a> | Correo: <a href="mailto:josemvalenciar@gmail.com">josemvalenciar@gmail.com</a></span>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll("[data-copy]").forEach((button) => {
+      button.addEventListener("click", async () => {
+        const id = button.getAttribute("data-copy");
+        const text = document.getElementById(id)?.innerText || "";
+        try {
+          await navigator.clipboard.writeText(text);
+          button.innerText = "Copiado";
+          setTimeout(() => { button.innerText = "Copiar prompt"; }, 1400);
+        } catch {
+          button.innerText = "Selecciona y copia";
+        }
+      });
+    });
+  </script>
+</body>
+</html>
