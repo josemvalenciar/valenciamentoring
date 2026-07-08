@@ -1,33 +1,198 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title>Diagnóstico Personalizado | Valencia Mentoring</title>
 
-<link rel="stylesheet" href="style.css">
+<meta name="description" content="Descubre tu ruta personalizada de aprendizaje con Valencia Mentoring.">
+
+<style>
+
+:root {
+  --bg: #f7f9fb;
+  --panel: #ffffff;
+  --ink: #101722;
+  --muted: #566273;
+  --line: #dce5ee;
+  --blue: #1769ff;
+  --soft: #eef5ff;
+}
+
+* {
+box-sizing:border-box;
+}
+
+body {
+margin:0;
+font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+background:var(--bg);
+color:var(--ink);
+line-height:1.5;
+}
+
+.container {
+width:min(900px, calc(100% - 32px));
+margin:auto;
+padding:50px 0;
+}
+
+header {
+text-align:center;
+margin-bottom:40px;
+}
+
+.logo {
+font-weight:900;
+font-size:22px;
+margin-bottom:30px;
+}
+
+h1 {
+font-size:clamp(36px,6vw,58px);
+line-height:1.1;
+margin:0;
+}
+
+.subtitle {
+font-size:20px;
+color:var(--muted);
+margin-top:20px;
+}
+
+.card {
+background:white;
+border:1px solid var(--line);
+border-radius:12px;
+padding:30px;
+margin-top:25px;
+}
+
+h2 {
+margin-top:0;
+}
+
+.list {
+padding-left:20px;
+color:var(--muted);
+}
+
+.btn {
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:14px 24px;
+background:var(--blue);
+color:white;
+text-decoration:none;
+border-radius:8px;
+font-weight:800;
+margin-top:20px;
+}
+
+.note {
+color:var(--muted);
+font-size:14px;
+margin-top:20px;
+}
+
+</style>
 
 </head>
 
+
 <body>
 
-<header>
-<h1>Diagnóstico de Aprendizaje Personalizado</h1>
+<div class="container">
 
-<p>
-Descubre una ruta de aprendizaje adaptada a tus objetivos,
-intereses y forma de aprender.
+
+<header>
+
+<div class="logo">
+Valencia Mentoring
+</div>
+
+<h1>
+Descubre tu ruta personalizada de aprendizaje
+</h1>
+
+<p class="subtitle">
+Un diagnóstico para comprender tus objetivos, tus bloqueos y la mejor forma de ayudarte a avanzar.
 </p>
 
 </header>
 
 
-<div class="formulario">
+<section class="card">
 
-<iframe data-tally-src="https://tally.so/embed/ODyKda?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1" loading="lazy" width="100%" height="4172" frameborder="0" marginheight="0" marginwidth="0" title="Diagnóstico de Aprendizaje Personalizado - Valencia Mentoring"></iframe>
-<script>var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}</script>
+<h2>
+¿Qué recibirás?
+</h2>
+
+<p>
+Después de completar el diagnóstico analizaré tus respuestas y recibirás una orientación personalizada con recomendaciones prácticas.
+</p>
+
+
+<ul class="list">
+
+<li>Una lectura de tu perfil de aprendizaje.</li>
+
+<li>Identificación de obstáculos que pueden estar frenando tu progreso.</li>
+
+<li>Primeros pasos que puedes aplicar inmediatamente.</li>
+
+<li>Herramientas adaptadas a tus intereses.</li>
+
+<li>Una posible ruta de desarrollo personalizada.</li>
+
+</ul>
+
+
+</section>
+
+
+
+<section class="card">
+
+<h2>
+Diagnóstico personalizado
+</h2>
+
+
+<p>
+Responde con sinceridad. No buscamos respuestas perfectas, sino comprender cómo aprendes, qué quieres lograr y qué necesitas para avanzar.
+</p>
+
+
+<!-- AQUÍ INSERTAREMOS TALLY -->
+
+
+</section>
+
+
+
+<section class="card">
+
+<h2>
+Después del diagnóstico
+</h2>
+
+
+<p>
+Recibirás un documento personalizado con observaciones sobre tu perfil, recomendaciones iniciales y estrategias que puedes comenzar a aplicar desde ahora.
+</p>
+
+
+<p class="note">
+El diagnóstico es una herramienta de orientación y aprendizaje. No sustituye evaluaciones académicas, psicológicas o profesionales.
+</p>
+
+
+</section>
+
 
 </div>
 
